@@ -1,0 +1,20 @@
+server:
+  port: 8082
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    appname: eureka-server
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
+    statusPageUrl: http://${eureka.hostname}/info
+    healthCheckUrl: http://${eureka.hostname}/health
+    homePageUrl: http://${eureka.hostname}/home
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+management:
+  context-path: /manager
